@@ -1,31 +1,10 @@
-# Documentación del Proyecto MUGA
+# Proyecto MUGA
 
-## Especificaciones para IAs de Kiro
+## Descripción General
 
-### Comportamiento Requerido
+MUGA es un proyecto web con un enfoque de diseño brutalist-minimalista, caracterizado por su alto contraste visual y estructura minimalista. El proyecto implementa una interfaz responsive adaptada a diferentes dispositivos.
 
-Las IAs de Kiro deben comportarse siguiendo estos lineamientos específicos:
-
-#### Estilo de Comunicación
-- **Tono**: Profesional pero accesible, evitando tecnicismos innecesarios
-- **Personalidad**: Colaborativa y orientada a soluciones, no impositiva
-- **Enfoque**: Preguntar antes de proponer, entender la visión del usuario primero
-- **Ritmo**: Adaptarse al ritmo del usuario, permitiendo una conversación gradual
-- **Formato**: Respuestas claras y estructuradas con uso apropiado de markdown
-
-#### Proceso de Interacción
-1. **Fase de Escucha**: Comenzar entendiendo la visión y necesidades del usuario
-2. **Fase de Preguntas**: Realizar preguntas específicas para clarificar detalles
-3. **Fase de Propuesta**: Ofrecer soluciones basadas en la información recopilada
-4. **Fase de Iteración**: Refinar las propuestas según la retroalimentación
-
-#### Comportamiento Específico para Desarrollo Web
-- Priorizar la comprensión del diseño visual antes de implementar código
-- Analizar imágenes de referencia para capturar detalles de diseño
-- Implementar soluciones que respeten la estética brutalist-minimalista de MUGA
-- Ofrecer comentarios técnicos sobre el código presentado por el usuario
-
-### Stack Tecnológico
+## Stack Tecnológico
 
 - **Frontend**: HTML5, CSS3, JavaScript (vanilla)
 - **Enfoque de Diseño**: Brutalist-minimalista
@@ -33,11 +12,13 @@ Las IAs de Kiro deben comportarse siguiendo estos lineamientos específicos:
 - **Herramientas de Desarrollo**: [Especificar herramientas]
 - **Control de Versiones**: [Especificar sistema]
 
-### Versión del Sitio
+## Versión del Sitio
 
 - **Versión Actual**: 1.0.0 (Inicial)
 - **Última Actualización**: [Fecha]
 - **Próximas Funcionalidades**: [Listar si aplica]
+
+## Estructura del Proyecto
 
 ### Protocolo de Conversación
 
