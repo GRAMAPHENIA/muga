@@ -105,6 +105,10 @@ body {
 
 #box-4 {
   grid-area: 2 / 2 / 3 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 #box-5 {
@@ -124,11 +128,13 @@ body {
 .badge {
   background-color: #ff5353;
   color: #ffffff;
-  padding: .25rem 0.5rem;
+  padding: 0.1rem 0.8rem;
   border-radius: 2rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 1px;
+  font-size: .8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  letter-spacing: .1px;
+  display: inline-block;
 }
 
 /* Media queries simplificados para mejor responsividad */
@@ -175,4 +181,58 @@ body {
   #box-1 {
     padding: 0;
   }
+}
+
+/* Estilo para el título de servicio */
+.service-title {
+  font-family: 'PT Serif', serif;
+  font-size: 40px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  margin-top: 12px;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* Estilo para la descripción del servicio */
+.service-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  color: #D9D9D9;
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+/* Estilo para las filas dentro de box-4 */
+.bottom-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+/* Estilo para el botón Saber más */
+.know-more-btn {
+  display: inline-block;
+  background-color: #D9D9D9;
+  color: #191717;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin-top: 60px;
+  transition: all 0.3s ease;
+  align-self: flex-end;
+}
+
+.know-more-btn:hover {
+  background-color: #ffffff;
 }
