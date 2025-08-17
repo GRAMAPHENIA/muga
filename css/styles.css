@@ -100,7 +100,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 10px;
 }
 
 #box-4 {
@@ -109,6 +108,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  border-right: 0.5px dashed #D9D9D920; /* Añadido borde derecho para separar box-4 de box-5 */
 }
 
 #box-5 {
@@ -157,12 +157,63 @@ body {
     gap: 0;
   }
   
+  .left-column {
+    grid-area: 1 / 1 / 3 / 2; /* Ocupar todo el espacio disponible */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0;
+  }
+  
   .m-logo {
     display: none; /* Ocultar también la imagen directamente */
   }
   
   #box-1 {
     padding: 0;
+  }
+  
+  /* Hacer que box-4 ocupe dos columnas en secciones oscuras (derecha) */
+  .dark-section #box-4 {
+    grid-area: 2 / 2 / 3 / 4; /* Ocupar columnas 2 y 3 (derecha) */
+    padding-left: 0; /* Eliminar padding izquierdo */
+    padding-right: 0; /* Eliminar padding derecho */
+  }
+  
+  /* Hacer que box-3 ocupe dos columnas en secciones claras (izquierda) */
+  .light-section #box-3 {
+    grid-area: 2 / 1 / 3 / 4; /* Modificado para ocupar las tres columnas en móvil */
+    padding-left: 0; /* Eliminar padding izquierdo */
+    padding-right: 0; /* Eliminar padding derecho */
+    width: 100%; /* Asegurar que ocupe el ancho completo */
+  }
+  
+  /* Ocultar box-5 */
+  #box-5 {
+    display: none;
+  }
+  
+  /* Ocultar box-4 en secciones claras */
+  .light-section #box-4 {
+    display: none;
+  }
+  
+  /* Achicar los títulos para móvil */
+  .grid-section .grid-container #box-4 .service-title,
+  .grid-section .grid-container #box-3 .service-title {
+    font-size: 20px; /* Tamaño de 20px para móvil con mayor especificidad */
+  }
+  
+  /* Configurar tres columnas para la sección */
+  .left-column, .right-column {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  
+  /* Hacer que box-3 ocupe dos columnas en secciones claras */
+  .light-section #box-3 {
+    grid-area: 2 / 1 / 3 / 3; /* Ocupar columnas 1 y 2 */
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -178,21 +229,48 @@ body {
     gap: 0;
   }
   
+  .left-column {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  
   #box-1 {
     padding: 0;
+  }
+  
+  /* Hacer que box-4 ocupe también el espacio de box-5 */
+  #box-4 {
+    grid-area: 2 / 2 / 3 / 4; /* Modificado para ocupar las columnas 2 y 3 */
+    border-right: none; /* Eliminar el borde derecho ya que ahora llega hasta el final */
+  }
+  
+  /* Hacer que box-3 ocupe también el espacio de box-4 y box-5 en secciones claras */
+  .light-section #box-3 {
+    grid-area: 2 / 1 / 3 / 4; /* Modificado para ocupar las tres columnas */
+  }
+  
+  /* Ocultar box-5 en tabletas ya que su espacio lo ocupan otros elementos */
+  #box-5 {
+    display: none;
+  }
+  
+  /* Ocultar box-4 en secciones claras en tabletas */
+  .light-section #box-4 {
+    display: none;
   }
 }
 
 /* Estilo para el título de servicio */
 .service-title {
   font-family: 'PT Serif', serif;
-  font-size: 40px;
+  font-size: 30px; /* Reducido de 40px a 34px */
   font-weight: 700;
   font-style: italic;
   color: #ffffff;
   margin-top: 12px;
   text-align: left;
   line-height: 1.2;
+  white-space: nowrap; /* Evita saltos de línea */
 }
 
 /* Estilo para la descripción del servicio */
@@ -205,7 +283,34 @@ body {
   margin-top: 10px;
   text-align: left;
   line-height: 1.5;
-  max-width: 90%;
+  max-width: 100%; /* Cambiado de 90% a 100% */
+  border-top: 0.5px dashed #D9D9D920; /* Añadido borde superior */
+  border-bottom: 0.5px dashed #D9D9D920; /* Añadido borde inferior */
+  padding-top: 10px; /* Añadido padding superior */
+  padding-bottom: 10px; /* Añadido padding inferior */
+  /* Asegurar que los elementos internos lleguen al borde */
+  .top-row, .bottom-row {
+    width: 100%;
+    padding: 0;
+  }
+  
+  /* Ajustar el badge y título para que lleguen al borde */
+  .badge {
+    margin-left: 0;
+  }
+  
+  .service-title {
+    margin-left: 0;
+  }
+  
+  .service-description {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  
+  /* Asegurar que ocupe todo el ancho disponible */
+  width: 100%;
 }
 
 /* Estilo para las filas dentro de box-4 */
@@ -229,10 +334,71 @@ body {
   padding: 8px 16px;
   text-decoration: none;
   margin-top: 60px;
+  margin-bottom: 20px; /* Añadido margen inferior */
   transition: all 0.3s ease;
   align-self: flex-end;
 }
 
 .know-more-btn:hover {
   background-color: #ffffff;
+}
+
+/* Estilo para los identificadores de caja */
+.box-id {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 5px;
+  font-size: 10px;
+  font-family: monospace;
+  border-radius: 3px;
+  z-index: 100;
+}
+
+.light-section .box-id {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.dark-section .box-id {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+}
+
+/* Asegurar que los contenedores tengan posición relativa para el posicionamiento absoluto */
+.grid-item, .left-image, .right-image {
+  position: relative;
+}
+
+/* Añadir borde vertical en el lado derecho de la sección U-3 */
+.light-section #box-3 {
+  position: relative; /* Asegurar que el pseudo-elemento se posicione correctamente */
+}
+
+.light-section #box-3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  border-right: 0.5px dashed #19171760; /* Cambiado a color negro sólido para mayor visibilidad */
+}
+
+/* Para asegurar que el borde se vea correctamente en móvil cuando ocupa dos columnas */
+@media (max-width: 767px) {
+  .light-section #box-3::after {
+    right: 0;
+  }
+}
+
+/* Clase para invertir M1 y M2 */
+.colreverse #box-1 {
+  grid-area: 1 / 2 / 2 / 4;
+}
+
+.colreverse #box-2 {
+  grid-area: 1 / 1 / 2 / 2;
 }
