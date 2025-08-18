@@ -11,6 +11,12 @@ export function initSmoothScroll() {
     const sections = document.querySelectorAll('.grid-section');
     const sectionsArray = Array.from(sections);
     
+    // Obtener el footer y añadirlo como una sección más
+    const footer = document.querySelector('footer.site-footer');
+    if (footer) {
+        sectionsArray.push(footer);
+    }
+    
     // Variables para controlar el scroll
     let isScrolling = false;
     let currentSectionIndex = 0;
@@ -33,11 +39,19 @@ export function initSmoothScroll() {
         // Calcular la posición exacta para centrar la sección
         const targetPosition = targetSection.offsetTop - (window.innerHeight - targetSection.offsetHeight) / 2 + offsetAdjustment;
         
-        // Usar scrollTo para mayor compatibilidad entre navegadores
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+        // Si es el footer, asegurar que se vea completo
+        if (targetSection === footer) {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        } else {
+            // Usar scrollTo para mayor compatibilidad entre navegadores
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
         
         // Asegurar que isScrolling se restablezca después de un tiempo máximo
         setTimeout(() => {
@@ -91,6 +105,12 @@ export function initSmoothScroll() {
         // Punto medio de la ventana con ajuste de offset
         const scrollPosition = window.scrollY + window.innerHeight / 2 + offsetAdjustment;
         
+        // Comprobar si estamos cerca del final de la página (footer)
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+            currentSectionIndex = sectionsArray.length - 1;
+            return;
+        }
+        
         for (let i = 0; i < sectionsArray.length; i++) {
             const section = sectionsArray[i];
             const sectionTop = section.offsetTop;
@@ -111,7 +131,10 @@ export function initSmoothScroll() {
                 findVisibleSection();
                 // Usar un enfoque más suave para evitar bucles
                 if (Math.abs(window.scrollY - (sectionsArray[currentSectionIndex].offsetTop - (window.innerHeight - sectionsArray[currentSectionIndex].offsetHeight) / 2)) > 50) {
-                    scrollToSection(currentSectionIndex);
+                    // No reajustar si estamos en el footer
+                    if (currentSectionIndex < sectionsArray.length - 1 || sectionsArray[currentSectionIndex] !== footer) {
+                        scrollToSection(currentSectionIndex);
+                    }
                 }
             }
         });
@@ -125,7 +148,10 @@ export function initSmoothScroll() {
                 findVisibleSection();
                 // Usar un enfoque más suave para evitar bucles
                 if (Math.abs(window.scrollY - (sectionsArray[currentSectionIndex].offsetTop - (window.innerHeight - sectionsArray[currentSectionIndex].offsetHeight) / 2)) > 50) {
-                    scrollToSection(currentSectionIndex);
+                    // No reajustar si estamos en el footer
+                    if (currentSectionIndex < sectionsArray.length - 1 || sectionsArray[currentSectionIndex] !== footer) {
+                        scrollToSection(currentSectionIndex);
+                    }
                 }
             }, 150);
         });
