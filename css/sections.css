@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
 }
 
 /* Secciones oscuras (M y G) */
@@ -71,7 +73,7 @@
   height: 100%;
   position: relative;
   gap: 0;
-  border-left: 0.5px dashed #D9D9D920;
+  border-left: 0.5px dashed #d9d9d920;
 }
 
 /* Línea divisoria horizontal para separar filas */
@@ -81,7 +83,7 @@
   left: 0;
   top: 50%;
   width: 100%;
-  border-top: 0.5px dashed #D9D9D920;
+  border-top: 0.5px dashed #d9d9d920;
   z-index: 1;
 }
 
@@ -92,7 +94,7 @@
   left: 33.33%;
   top: 0;
   height: 100%;
-  border-left: 0.5px dashed #D9D9D920;
+  border-left: 0.5px dashed #d9d9d920;
   z-index: 1;
 }
 
@@ -114,7 +116,7 @@
   left: 0;
   top: 50%;
   width: 100%;
-  border-top: 0.5px dashed #D9D9D920;
+  border-top: 0.5px dashed #d9d9d920;
   z-index: 1;
 }
 
@@ -125,7 +127,7 @@
   left: 33.33%;
   top: 0;
   height: 100%;
-  border-left: 0.5px dashed #D9D9D920;
+  border-left: 0.5px dashed #d9d9d920;
   z-index: 1;
 }
 
@@ -163,21 +165,24 @@
 
 /* Media queries para responsividad */
 @media (max-width: 767px) {
-  .grid-container, .grid-container.reverse {
+  .grid-container,
+  .grid-container.reverse {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     gap: 0;
   }
-  
-  .left-image, .right-image {
+
+  .left-image,
+  .right-image {
     display: none;
   }
-  
-  .right-column, .left-column {
+
+  .right-column,
+  .left-column {
     grid-area: 1 / 1 / 3 / 2;
     /* padding: 5%; */
   }
-  
+
   .grid-section {
     height: 100vh; /* Cambiar de auto a 100vh fijo */
     min-height: 0; /* Eliminar min-height */
@@ -186,14 +191,15 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   /* Ajustar el contenido interno para que se adapte a la altura fija */
   .grid-item {
     max-height: 100%;
   }
-  
+
   /* Asegurar que los elementos internos no causen scroll */
-  #box-3, #box-4 {
+  #box-3,
+  #box-4 {
     padding-bottom: 20px;
   }
 }
@@ -202,7 +208,7 @@
   .grid-container {
     grid-template-columns: 45% 55%;
   }
-  
+
   .grid-container.reverse {
     grid-template-columns: 55% 45%;
   }
@@ -265,4 +271,16 @@
 
 .light-section .know-more-btn {
   margin-bottom: 20px; /* Asegurar margen inferior consistente */
+}
+
+/* Optimización para secciones fuera del viewport inicial */
+.grid-section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
+/* Asegurar que las secciones mantengan su tamaño durante la carga */
+.grid-section {
+  min-height: 100vh;
+  overflow: hidden;
 }

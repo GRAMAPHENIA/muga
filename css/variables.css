@@ -1,0 +1,33 @@
+:root {
+  /* Colores */
+  --color-dark: #191717;
+  --color-light: #ffffff;
+  --color-accent: #ff5353;
+  --color-text-dark: #191717;
+  --color-text-light: #ffffff;
+  --color-text-muted: #D9D9D9;
+  --border-dashed: 0.5px dashed rgba(217, 217, 217, 0.2);
+  
+  /* Layout */
+  --grid-dark-left: 40%;
+  --grid-dark-right: 60%;
+  --grid-light-left: 60%;
+  --grid-light-right: 40%;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 767px;
+  --breakpoint-tablet-min: 768px;
+  --breakpoint-tablet-max: 1279px;
+  --breakpoint-desktop: 1280px;
+  
+  /* Espaciado */
+  --padding-standard: 20px;
+  --padding-small: 10px;
+  
+  /* Tipografía */
+  --font-heading: 'PT Serif', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-size-title: 30px;
+  --font-size-body: 14px;
+  --font-size-small: 0.8rem;
+}
